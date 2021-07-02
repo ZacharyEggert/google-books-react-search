@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/ZacharyEggert/google-books-react-search#readme",
   "dependencies": {
+    "concurrently": "^6.2.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongoose": "^5.13.1",
     "path": "^0.12.7",
-    "session": "^0.1.0",        
-    "concurrently": "^6.2.0"
-
+    "session": "^0.1.0"
   },
   "engines": {
     "node": "14.16.0"
