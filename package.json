@@ -12,7 +12,7 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": ""
+    "heroku-postbuild": "NODE_ENV=production npm run build"
   },
   "repository": {
     "type": "git",
