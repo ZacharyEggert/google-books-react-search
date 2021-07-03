@@ -22,7 +22,11 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    try{
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    }catch(err){
+        console.error(err);
+    }
 });
 
 app.listen(PORT, () =>{
