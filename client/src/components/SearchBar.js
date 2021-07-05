@@ -11,16 +11,33 @@ const SearchBar = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.get(`/api/search/${searchState.search}`)
+        axios.post('/api/search', {baseUrl:`https://www.googleapis.com/books/v1/volumes?q=${searchState.search}`})
         .then(response => {
             if(response.status < 300){
+                console.log(response)
                 return response;
             }else{
-                throw new Error(response)
+                throw response
             }
         })
         .then(response => {
             // console.log(response)
+            const results = response.data.items.map(item => {
+
+                const {description, textSnippet, authors, canonicalVolumeLink, imageLinks, title} = item.volumeInfo;
+
+                return {
+                    id:item.id, 
+                    description, 
+                    textSnippet, 
+                    authors,
+                    link:canonicalVolumeLink, 
+                    image:imageLinks.thumbnail, 
+                    title }
+
+            })
+
+            setSearchState({...searchState, results})
         }).catch(error => console.error(error))
     }
 

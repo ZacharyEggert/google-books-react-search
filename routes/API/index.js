@@ -1,5 +1,5 @@
 const Book = require('../../models/Book');
-
+const axios = require('axios');
 const router = require('express').Router();
 
 router.get('/saved', async (req, res) => {
@@ -47,6 +47,21 @@ router.delete('/saved/:id', async (req, res) => {
     res.json(books);
     return;
 })
+
+
+router.post('/search', async (req, res) => {
+    const keySection = `&key=${process.env.GOOGLE_API_KEY}`;
+    const {baseUrl} = req.body;
+
+    const url = baseUrl + keySection;
+    try{
+        const response = await axios.get(url);
+        res.json(response.data)
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
+
 
 
 router.get('/', async (req, res) => {
