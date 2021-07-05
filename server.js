@@ -4,13 +4,15 @@ const express = require('express');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const mongoose = require('mongoose');
+
 const routes = require('./routes');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000
 
 const store = new MongoDBStore({
-    uri: process.env.MONGO_SESSION_URI || 'mongodb://localhost:27017/Books',
+    uri: process.env.MONGO_SESSION_URI || 'mongodb://localhost/Books',
     collection:'sessions'
 }, (error) => {error?console.error({error}):null;})
 
@@ -32,6 +34,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "client", "build")))
 
+app.use(routes);
+
 app.get("*", (req, res) => {
     try{
         res.sendFile(path.join(__dirname, "client", "build", "index.html"));
@@ -40,6 +44,10 @@ app.get("*", (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+mongoose.connect(process.env.MONGO_SESSION_URI || 'mongodb://localhost/Books', { useNewUrlParser: true, })
+
 
 app.listen(PORT, () =>{
     console.log('Listening on port ' + PORT);
