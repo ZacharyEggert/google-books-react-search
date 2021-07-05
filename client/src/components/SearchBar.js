@@ -28,12 +28,12 @@ const SearchBar = (props) => {
 
                 return {
                     id:item.id, 
-                    description, 
-                    textSnippet, 
-                    authors,
-                    link:canonicalVolumeLink, 
-                    image:imageLinks?.thumbnail||'', 
-                    title }
+                    description: description || null, 
+                    textSnippet:textSnippet || null, 
+                    authors:authors || [],
+                    link:canonicalVolumeLink || 'https://www.google.com/', 
+                    image:imageLinks?.thumbnail||null, 
+                    title:title || null }
 
             })
 
