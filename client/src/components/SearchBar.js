@@ -32,7 +32,7 @@ const SearchBar = (props) => {
                     textSnippet, 
                     authors,
                     link:canonicalVolumeLink, 
-                    image:imageLinks.thumbnail, 
+                    image:imageLinks?.thumbnail||'', 
                     title }
 
             })
