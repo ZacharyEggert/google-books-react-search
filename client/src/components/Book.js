@@ -39,18 +39,18 @@ const Book = (props) => {
                     <h4 className='text-lg'>{title}</h4>
                     <p className='text-xs'>Written By {authors.join(', ')}</p>
                 </div>
-                <div>
+                <div className='flex flex-col sm:flex-row'>
                     <a href={link}><button className='px-2 m-1 bg-white border-2 border-black border-solid shadow-md'>View</button></a>
-                    {saved?
-                        <button className='px-2 m-1 bg-white border-2 border-black border-solid shadow-md' onClick={handleSave}>Unsave</button>
-                        :<button className='px-2 m-1 bg-white border-2 border-black border-solid shadow-md' onClick={handleSave}>Save</button>
-                    }
+                    <span>{saved?
+                        <button className='px-2 m-1 bg-white border-2 border-black border-solid shadow-md flex-0' onClick={handleSave}>Unsave</button>
+                        :<button className='px-2 m-1 bg-white border-2 border-black border-solid shadow-md flex-0' onClick={handleSave}>Save</button>
+                    }</span>
                 </div>
             </div>
             <div className='flex mt-4'>
-                <img alt={title} src={image} className='w-32 mr-4 md:w-48'/>
-                <p className=''>
-                    {description || textSnippet}
+                <div className='contents'><img alt={title} src={image} className='w-32 h-48 mr-4 md:w-48 md:h-72'/></div>
+                <p className='text-sm sm:text-md'>
+                    {description?.slice(0, 500).trim() || textSnippet?.slice(0, 500).trim()}{description?.slice(0, 500).length===500 ? '...' : null}
                 </p>
             </div>
         </div>
