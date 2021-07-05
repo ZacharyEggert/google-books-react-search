@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/ZacharyEggert/google-books-react-search#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "concurrently": "^6.2.0",
     "connect-mongodb-session": "^2.4.1",

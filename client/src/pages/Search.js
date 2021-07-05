@@ -7,24 +7,7 @@ const Search = () => {
     
     const initialState = {
         search:'Harry Potter', 
-        results:[
-            {
-                title:'Harry Potter and That Time Hermione Was a Cat',
-                authors:['J.K. Rowling'],
-                description:'Harry Potter hopes this doesn\'t awaken anything inside him, in this all new instant classic set in between years 3 and 4 at Hogwarts.',
-                image:'https://placekitten.com/g/200/250',
-                link:'https://google.com/',
-                id:'444'
-            },
-            {
-                title:'Harry Potter and That Time Hermione Was a Cat',
-                authors:['J.K. Rowling'],
-                description:'Harry Potter hopes this doesn\'t awaken anything inside him, in this all new instant classic set in between years 3 and 4 at Hogwarts.',
-                image:'https://placekitten.com/g/200/250',
-                link:'https://google.com/',
-                id:'445'
-            },
-        ]
+        results:[  ]
     }
 
     // eslint-disable-next-line no-unused-vars

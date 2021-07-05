@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Saved = () => {
 
-    let savedBooks = [];
+    const  [savedBooks, setSavedBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -17,8 +17,9 @@ const Saved = () => {
             if(response.status < 300){return response} 
             throw new Error(response)
         })
-        .then(response => {
-            console.log(response);
+        .then(({data}) => {
+            console.log(data);
+            setSavedBooks(data)
             setLoading(false);
         })
         .catch(error => console.error(error))
@@ -31,8 +32,8 @@ const Saved = () => {
             <TitleCard />
             {loading?
                 <Loading />
-                :(savedBooks?
-                    <SavedBooks savedBooks={savedBooks}/>
+                :(savedBooks&&savedBooks?.length>0?
+                    <SavedBooks savedBooks={savedBooks} setSavedBooks={setSavedBooks}/>
                 :<NoSaved />)}
             
         </div>
