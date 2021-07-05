@@ -17,8 +17,11 @@ const BookSchema = new Schema({
     link:{
         type: String,
     },
+    id: {
+        type: String,
+    },
 });
 
-const Book = mongoose.model(BookSchema);
+const Book = mongoose.model("Book", BookSchema);
 
 module.exports = Book;
